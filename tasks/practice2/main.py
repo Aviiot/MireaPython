@@ -63,6 +63,10 @@ def task5():
 	except ZeroDivisionError:
 		print('деление на 0')
 
+def task6():
+	input_string = input()
+	with open('file.txt', 'a') as f:
+		f.write(input_string + '\n')
 
 def main():
 	main_window = tk.Tk()
@@ -99,4 +103,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
-	#task4()
+	#task6()
