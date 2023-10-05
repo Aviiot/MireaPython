@@ -15,7 +15,6 @@ def task2():
 			number //= 10
 		print(digit_sum)
 	digit_sum(int(input()))
-
 def task3():
 	import random
 	products = ["рыба", "мясо", "сталь", "игрушки", "одежда", "книги", "электроника", "мебель", "еда", "сок",
@@ -30,7 +29,6 @@ def task3():
 	print('\nПервый завод: ' + ' '.join(factory1_products))
 	print('Второй завод: ' + ' '.join(factory2_products))
 	print('Пересечение: ' + ' '.join(unique_products))
-
 def task4():
 	dicionary = {
 		'Питонов Дмитрий Александрович': {
@@ -56,6 +54,15 @@ def task4():
 		print('Имя: ', name)
 		print('Информация: ', data)
 		print('\n')
+def task5():
+	import random
+	num = random.randint(0, 1)
+
+	try:
+		print(10/num)
+	except ZeroDivisionError:
+		print('деление на 0')
+
 
 def main():
 	main_window = tk.Tk()
@@ -70,8 +77,8 @@ def main():
 			("Задание №2", task2),
 			("Задание №3", task3),
 			("Задание №4", task4),
-			"""("Задание №5", task5),
-			("Задание №6", task6),
+			("Задание №5", task5),
+			"""("Задание №6", task6),
 			("Задание №7", task7) """
 		]
 
@@ -91,5 +98,5 @@ def main():
 
 
 if __name__ == "__main__":
-	#main()
-	task4()
+	main()
+	#task4()
