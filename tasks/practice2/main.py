@@ -16,6 +16,20 @@ def task2():
 		print(digit_sum)
 	digit_sum(int(input()))
 
+def task3():
+	import random
+	products = ["рыба", "мясо", "сталь", "игрушки", "одежда", "книги", "электроника", "мебель", "еда", "сок",
+				"косметика", "обувь", "инструменты", "автомобили", "спорттовары"]
+	how_products = random.randint(1, 15)
+
+	factory1_products = set(random.sample(products, how_products))
+	factory2_products = set(random.sample(products, how_products))
+
+	unique_products = factory1_products.intersection(factory2_products)
+
+	print('\nПервый завод: ' + ' '.join(factory1_products))
+	print('Второй завод: ' + ' '.join(factory2_products))
+	print('Пересечение: ' + ' '.join(unique_products))
 
 
 
