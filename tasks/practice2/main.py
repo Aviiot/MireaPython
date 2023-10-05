@@ -63,7 +63,7 @@ def task5():
 	except ZeroDivisionError:
 		print('деление на 0')
 def task6():
-	input_string = input()
+	input_string = input('Введите строку: ')
 	with open('file.txt', 'a') as f:
 		f.write(input_string + '\n')
 def task7():
@@ -73,6 +73,14 @@ def task7():
 	except FileNotFoundError:
 		print('Файла нет')
 
+def task8():
+	import os
+	import shutil
+	try:
+		shutil.copy('file.txt', 'new_file.txt')
+		os.remove('file.txt')
+	except FileNotFoundError:
+		print('Файла нет')
 
 def main():
 	main_window = tk.Tk()
@@ -88,8 +96,9 @@ def main():
 			("Задание №3", task3),
 			("Задание №4", task4),
 			("Задание №5", task5),
-			"""("Задание №6", task6),
-			("Задание №7", task7) """
+			("Задание №6", task6),
+			("Задание №7", task7),
+			("Задание №8", task8)
 		]
 
 		for text, command in tasks:
@@ -108,5 +117,4 @@ def main():
 
 
 if __name__ == "__main__":
-	#main()
-	#task7()
+	main()
