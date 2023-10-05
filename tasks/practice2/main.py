@@ -62,11 +62,17 @@ def task5():
 		print(10/num)
 	except ZeroDivisionError:
 		print('деление на 0')
-
 def task6():
 	input_string = input()
 	with open('file.txt', 'a') as f:
 		f.write(input_string + '\n')
+def task7():
+	try:
+		with open('file.txt', 'r') as f:
+			print(f.read())
+	except FileNotFoundError:
+		print('Файла нет')
+
 
 def main():
 	main_window = tk.Tk()
@@ -102,5 +108,5 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
-	#task6()
+	#main()
+	#task7()
