@@ -2,8 +2,8 @@ import pygame
 def main():
     pygame.init()
 
-    width = 800
-    height = 600
+    width = 1920
+    height = 1080
 
     window = pygame.display.set_mode((width, height))
     pygame.display.set_caption("")
