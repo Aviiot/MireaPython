@@ -1,12 +1,16 @@
+# https://github.com/Aviiot/mirea-python/blob/main/tasks/practice2/main.py
+
+
+
 import tkinter as tk
 
 def task1():
 	def calculate_coordinate_dot(t, x0=0, v=0, a=0):
 		print(x0 + v * t + (a * t ** 2) / 2)
 
-	calculate_coordinate_dot(2, 5, 10, 3) # 5 + 10 * 2 + (3 * 2 ** 2) / 2 = 5 + 20 + 6 = 31
-	calculate_coordinate_dot(4, -2, 0, -5) # -2 + 0 * 4 + (-5 * 4 ** 2) / 2 = -2 + 0 + (-5 * 16) / 2 = -2 - 40 = -42
-	calculate_coordinate_dot(3.5) # 0 + 0 * 3.5 + (0 * 3.5 ** 2) / 2 = 0
+	calculate_coordinate_dot(2, 5, 10, 3)
+	calculate_coordinate_dot(4, -2, 0, -5)
+	calculate_coordinate_dot(3.5)
 def task2():
 	def digit_sum(number):
 		digit_sum = 0
@@ -56,8 +60,8 @@ def task4():
 		print('\n')
 def task5():
 	import random
-	num = random.randint(0, 1)
 
+	num = random.randint(0, 1)
 	try:
 		print(10/num)
 	except ZeroDivisionError:

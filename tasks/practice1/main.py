@@ -1,3 +1,7 @@
+# https://github.com/Aviiot/mirea-python/blob/main/tasks/practice1/main.py
+
+
+
 import tkinter as tk
 import random
 
