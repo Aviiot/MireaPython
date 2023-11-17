@@ -46,4 +46,40 @@ def task3():
 
     if __name__ == '__main__':
         app.run()
-task4()
+
+def task4():
+    import sqlite3
+
+    conn = sqlite3.connect('users.db')
+
+    conn.execute('''CREATE TABLE IF NOT EXISTS users
+                    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT,
+                    birth_year INTEGER,
+                    occupation TEXT)''')
+
+    while True:
+        name = input("Введите ФИО пользователя (для выхода введите 'стоп'): ")
+        if name.lower() == 'стоп слово':
+            break
+
+        birth_year = input("Введите год рождения пользователя: ")
+        occupation = input("Введите род деятельности пользователя: ")
+
+
+        conn.execute("INSERT INTO users (name, birth_year, occupation) VALUES (?, ?, ?)",
+                     (name, birth_year, occupation))
+        conn.commit()
+
+    print("Содержимое базы данных:")
+    cursor = conn.execute("SELECT * FROM users")
+    for row in cursor:
+        print("ID:", row[0])
+        print("ФИО:", row[1])
+        print("Год рождения:", row[2])
+        print("Род деятельности:", row[3])
+        print("----------------------------------")
+
+
+    conn.close()
+
