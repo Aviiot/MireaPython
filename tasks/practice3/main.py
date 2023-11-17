@@ -83,3 +83,49 @@ def task4():
 
     conn.close()
 
+def task5():
+    from flask import Flask, render_template, request, redirect
+    import sqlite3
+    import random
+
+    app = Flask(__name__)
+    db_name = 'users.db'
+
+    @app.route('/')
+    def index():
+        conn = sqlite3.connect(db_name)
+
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users")
+        rows = cursor.fetchall()
+        conn.close()
+        return render_template('index_2.html', rows=rows)
+
+
+    @app.route('/add_random', methods=['POST'])
+    def add_random():
+        conn = sqlite3.connect(db_name)
+        cursor = conn.cursor()
+        random_name = 'Random User ' + str(random.randint(1, 100))
+        random_birth_year = random.randint(1950, 2000)
+        random_occupation = 'Occupation ' + str(random.randint(1, 5))
+        cursor.execute("INSERT INTO users (name, birth_year, occupation) VALUES (?, ?, ?)",
+                       (random_name, random_birth_year, random_occupation))
+        conn.commit()
+        conn.close()
+        return redirect('/')
+
+    @app.route('/delete_row', methods=['POST'])
+    def delete_row():
+        row_id = request.form['row_id']
+        conn = sqlite3.connect(db_name)
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM users WHERE id=?", (row_id,))
+        conn.commit()
+        conn.close()
+        return redirect('/')
+
+    if __name__ == '__main__':
+        app.run()
+task5()

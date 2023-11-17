@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Данные из базы данных:</h1>
+    <ul>
+        {% for row in rows %}
+        <li>
+            ID: {{ row['id'] }}, Имя: {{ row['name'] }}, Год рождения: {{ row['birth_year'] }}, Занятие: {{ row['occupation'] }}
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/add_random" method="POST">
+        <button type="submit">Добавить случайную строку</button>
+    </form>
+    <form action="/delete_row" method="POST">
+        <input type="text" name="row_id" placeholder="Введите ID строки для удаления" required>
+        <button type="submit">Удалить строку</button>
+    </form>
+</body>
+</html>
