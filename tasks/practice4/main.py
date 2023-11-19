@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QGridLayout
+from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtCore import Qt
 
 
@@ -37,6 +38,30 @@ class Calculator(QWidget):
         self.layout.addLayout(buttons_layout)
         self.setLayout(self.layout)
 
+        # Настройка стилей кнопок
+        self.set_button_style()
+
+    def set_button_style(self):
+        buttons = self.findChildren(QPushButton)
+        for button in buttons:
+            button.setFixedSize(50, 50)
+            button.setStyleSheet("""
+                QPushButton {
+                    background-color: #F0F0F0;
+                    border: 1px solid #CCCCCC;
+                    border-radius: 5px;
+                    font-size: 16px;
+                }
+
+                QPushButton:hover {
+                    background-color: #E0E0E0;
+                }
+
+                QPushButton:pressed {
+                    background-color: #D0D0D0;
+                }
+            """)
+
     def button_clicked(self):
         button = self.sender()
         current_text = self.result_field.text()
@@ -57,6 +82,14 @@ class Calculator(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
+
+    palette = QPalette()
+    palette.setColor(QPalette.Button, QColor("#F0F0F0"))
+    palette.setColor(QPalette.ButtonText, QColor("#000000"))
+    palette.setColor(QPalette.Base, QColor("#F0F0F0"))
+    app.setPalette(palette)
+
     calculator = Calculator()
     calculator.show()
     sys.exit(app.exec_())
