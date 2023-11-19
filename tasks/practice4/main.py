@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QGridLayout
 from PyQt5.QtGui import QPalette, QColor
-from PyQt5.QtCore import Qt
+
 
 
 class Calculator(QWidget):
@@ -38,7 +38,6 @@ class Calculator(QWidget):
         self.layout.addLayout(buttons_layout)
         self.setLayout(self.layout)
 
-        # Настройка стилей кнопок
         self.set_button_style()
 
     def set_button_style(self):
